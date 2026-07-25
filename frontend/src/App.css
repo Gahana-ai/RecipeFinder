@@ -1218,3 +1218,45 @@ nav a:hover,
 .password-toggle-btn:focus {
   outline: none;
 }
+
+/* ==========================================
+   MOBILE & TABLET RESPONSIVE STYLES
+   ========================================== */
+
+@media (max-width: 768px) {
+  /* 1. Auth Form Adjustments */
+  .auth-container {
+    max-width: 90% !important;
+    margin: 30px auto !important;
+    padding: 20px !important;
+  }
+
+
+  .split-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+
+  .recipe-grid, 
+  .grid-container {
+    grid-template-columns: 1fr !important; 
+
+  .details-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+  }
+
+  .action-block {
+    width: 100% !important;
+    justify-content: flex-start !important;
+  }
+
+  .auth-input, 
+  .auth-btn, 
+  .edit-action-btn, 
+  .delete-action-btn {
+    font-size: 16px !important;
+  }
+}
