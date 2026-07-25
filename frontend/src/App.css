@@ -1224,13 +1224,12 @@ nav a:hover,
    ========================================== */
 
 @media (max-width: 768px) {
-  /* 1. Auth Form Adjustments */
+
   .auth-container {
     max-width: 90% !important;
     margin: 30px auto !important;
     padding: 20px !important;
   }
-
 
   .split-grid {
     display: flex !important;
@@ -1241,6 +1240,7 @@ nav a:hover,
   .recipe-grid, 
   .grid-container {
     grid-template-columns: 1fr !important; 
+  }
 
   .details-header {
     flex-direction: column !important;
@@ -1257,6 +1257,6 @@ nav a:hover,
   .auth-btn, 
   .edit-action-btn, 
   .delete-action-btn {
-    font-size: 16px !important;
+    font-size: 16px !important; 
   }
 }
