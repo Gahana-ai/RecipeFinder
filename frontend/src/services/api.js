@@ -1,9 +1,10 @@
-const API_URL = 'http://localhost:5000/api/recipes';
-const AUTH_URL = 'http://localhost:5000/api/auth';
+// Dynamic Base URL setup
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+const API_URL = `${BASE_URL}/api/recipes`;
+const AUTH_URL = `${BASE_URL}/api/auth`;
 
 export const api = {
-    // ---------------- AUTHENTICATION METHODS ----------------
-    // 1. User Sign In
     login: async (formData) => {
         const res = await fetch(`${AUTH_URL}/signin`, {
             method: 'POST',
@@ -14,11 +15,9 @@ export const api = {
         const data = await res.json();
 
         if (!res.ok) {
-            // Catches "Invalid email or password" or 500 server errors
             throw new Error(data.message || data.error || 'Login failed');
         }
 
-        // Standardize the returned user object for localStorage & frontend state
         return {
             user: {
                 userId: data.userId,
@@ -29,9 +28,7 @@ export const api = {
         };
     },
 
-    // 2. User Sign Up
     register: async (formData) => {
-        // Map userName to name as required by server.js (req.body expects name)
         const payload = {
             name: formData.userName || formData.name,
             email: formData.email,
@@ -47,14 +44,12 @@ export const api = {
         const data = await res.json();
 
         if (!res.ok) {
-            // Catches "Email already registered" or server errors
             throw new Error(data.message || data.error || 'Registration failed');
         }
 
         return data;
     },
 
-    // ---------------- RECIPE METHODS ----------------
     getAllRecipes: async () => {
         const res = await fetch(API_URL);
         if (!res.ok) throw new Error('Failed to fetch recipes');
